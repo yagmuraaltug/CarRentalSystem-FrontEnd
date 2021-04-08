@@ -1,5 +1,6 @@
 export interface Car{
     id:number,
+    customerId:number,
     brandName:string,
     brandId:number,
     colorId:number,
@@ -8,4 +9,5 @@ export interface Car{
     description:string,
     modelYear:number,
     imagePath:string;
+
 }

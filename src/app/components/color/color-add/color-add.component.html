@@ -1,0 +1,62 @@
+<div class="content">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header"><h5 class="title">Add Color</h5></div>
+      <div class="card-body">
+        <form [formGroup]="colorAddForm">
+          <div class="mb-3">
+            <label for="colorName">Color Name</label>
+            <div class="form-group">
+              <input
+                type="text"
+                id="colorName"
+                formControlName="colorName"
+                class="form-control"
+                placeholder="Color Name"
+              />
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-fill btn-primary" (click)="add()">
+          Add Color
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><h5 class="title">Update Color</h5></div>
+    <div class="card-body">
+      <div class="card-body">
+        <form [formGroup]="colorUpdateForm">
+          <div *ngIf="colors" class="form-group">
+            <input
+              type="number"
+              id="id"
+              formControlName="colorId"
+              class="form-control"
+              placeholder="{{ colors[0].colorId }}"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              *ngIf="colors"
+              type="text"
+              id="colorName"
+              formControlName="colorName"
+              class="form-control"
+              placeholder="{{ colors[0].colorName }}"
+            />
+          </div>
+        </form>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-fill btn-primary" (click)="update()">
+          Update Color
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

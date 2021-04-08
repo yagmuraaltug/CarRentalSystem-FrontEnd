@@ -1,8 +1,13 @@
-import { Car } from "../car/car";
-import { CarImage } from "../CarImage";
+
 
 
 export interface CarDto{
-    car : Car;
-    carImage: CarImage[];
+    carId: number;
+    brandName: string;
+    modelName: string;
+    colorName: string;
+    modelYear: number;
+    dailyPrice: number;
+    description: string;
+    ImagePath:string;
 }

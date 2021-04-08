@@ -1,0 +1,41 @@
+<form [formGroup]="rentalAddForm">
+  <div class="form-group">
+    <label for="customerId">Name</label>
+    <select formControlName="customerId" class="form-control" name="customerId">
+      <option
+        [value]="customer.customerId"
+        *ngFor="let customer of customersDetails"
+      >
+        {{ customer.customerName }}
+      </option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="rentDate">Rent Date</label>
+    <input
+      (change)="calculateTotalPrice()"
+      formControlName="rentDate"
+      class="form-control"
+      type="date"
+      name="rentDate"
+    />
+  </div>
+  <div class="form-group">
+    <label for="returnDate">Return Date</label>
+    <input
+      (change)="calculateTotalPrice()"
+      formControlName="returnDate"
+      class="form-control"
+      type="date"
+      name="returnDate"
+    />
+  </div>
+  <div *ngIf="totalPrice" class="form-group">
+    <label for="">Total Price</label>
+    <div>
+      <b>{{ totalPrice }} ₺</b>
+    </div>
+  </div>
+
+  <button (click)="addToCart()" class="btn btn-outline-dark">Rent</button>
+</form>

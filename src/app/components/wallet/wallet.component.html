@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="card" *ngFor="let wallet of wallets">
+    <h1>{{ wallet.brandName }}</h1>
+    <h6 class="card-subtitle mb-2 text-muted">{{ wallet.modelYear }}</h6>
+    <p {{ wallet.totalPrice }} TL></p>
+    <p><button>Add to Cart</button></p>
+  </div>
+
+  <div *ngIf="wallets.length > 0" class="col-md-3">
+    <div class="payment-box">
+      <h4 class="payment-box-title">Total Price</h4>
+      <h1 class="payment-box-total-price">{{ totalPrice }} TL</h1>
+      <div class="payment-box-button">
+        <button routerLink="/payment/" class="btn btn-outline-dark">
+          Go To Payment
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

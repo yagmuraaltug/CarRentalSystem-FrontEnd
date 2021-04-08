@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import {HttpClientModule} from '@angular/common/http'
+import {FormsModule, ReactiveFormsModule} from '@angular/forms'
+import {ToastrModule} from 'ngx-toastr'
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +16,16 @@ import { RentalComponent } from './components/rental/rental.component';
 import { NaviComponent } from './components/navi/navi.component';
 import { from } from 'rxjs';
 import { CarDtoComponent } from './components/car-dto/car-dto.component';
+import { FilterBrandPipe } from './pipes/filter-brand.pipe';
+import { FilterColorPipe } from './pipes/filter-color.pipe';
+import { FilterCarPipe } from './pipes/filter-car.pipe';
+import { RentalDetailsComponent } from './components/rental-details/rental-details.component';
+import { PaymentComponent } from './components/payment/payment.component';
+import { WalletComponent } from './components/wallet/wallet.component';
+import { CarUpdateComponent } from './components/car/car-update/car-update.component';
+import { ColorAddComponent } from './components/color/color-add/color-add.component';
+import { BrandAddUpdateComponent } from './components/brand/brand-add-update/brand-add-update.component';
+import { CarAddComponent } from './components/car-add/car-add.component';
 
 @NgModule({
   declarations: [
@@ -22,12 +36,28 @@ import { CarDtoComponent } from './components/car-dto/car-dto.component';
     CarComponent,
     RentalComponent,
     NaviComponent,
-    CarDtoComponent
+    CarDtoComponent,
+    FilterBrandPipe,
+    FilterColorPipe,
+    FilterCarPipe,
+    RentalDetailsComponent,
+    PaymentComponent,
+    WalletComponent,
+    CarAddComponent,
+    CarUpdateComponent,
+    ColorAddComponent,
+    BrandAddUpdateComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+    positionClass:"toast-bottom-right"
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

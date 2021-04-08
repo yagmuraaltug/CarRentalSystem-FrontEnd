@@ -6,11 +6,15 @@
   >
     Brands
   </button>
+  <div class="mb-3">
+    <label for="filterBrand" class="form-label" style="text-align:center; margin-left: 80px;">Search Brands</label>
+    <input type="text" [(ngModel)]="filterBrand" class="form-control" id="filterBrand" placeholder="Please enter a brand name">
+  </div>
   <a
     (click)="setCurrentBrand(brand)"
     [class]="getCurrentBrandClass(brand)"
     routerLink="/cars/brand/{{ brand.brandId }}"
-    *ngFor="let brand of brands"
+    *ngFor="let brand of brands | filterBrand:filterBrand"
     >{{ brand.brandName }}
   </a>
 </div>

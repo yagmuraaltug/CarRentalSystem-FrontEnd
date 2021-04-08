@@ -11,6 +11,7 @@ export class ColorComponent implements OnInit {
 
   currentColor : Color;
   colors: Color[] = [];
+  filterColor="";
   constructor(private colorService:ColorService) { }
 
   ngOnInit(): void {
@@ -44,5 +45,6 @@ export class ColorComponent implements OnInit {
   resetCurrentColor(){
     this.currentColor
   }
+  
 
 }

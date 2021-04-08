@@ -1,5 +1,50 @@
+<div class="row mb-2">
+  <div class="row" role="status">
+    <div class="col col-10" style="margin-top: 17px; margin-left: 20px">
+      <select
+        class="form-control form-select"
+        [(ngModel)]="brandId"
+        aria-label="Default select example"
+      >
+        <option value="0" selected>All Brands</option>
+        <option [value]="brand.brandId" *ngFor="let brand of brands">
+          {{ brand.brandName }}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="row-md-3" style="margin-top: 17px; margin-left: 20px">
+      <select
+        class="form-control form-select"
+        [(ngModel)]="colorId"
+        aria-label="Default select example"
+      >
+        <option value="0" selected>All Colors</option>
+        <option [value]="color.colorId" *ngFor="let color of colors">
+          {{ color.colorName }}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="col col-10" style="margin-left:8px">
+    <br />
+    <div class="btn-group">
+      <button
+        (click)="getCarsByFilter(brandId, colorId)"
+        type="button"
+        class="btn btn-primary"
+      >
+        FILTER
+      </button>
+    </div>
+  </div>
+  </div>
+
 <div class="row" style="margin-top: 1rem">
-  <div class="card" *ngFor="let car of cars" style="width: 100%; height: 100%;">
+  <div class="card" *ngFor="let car of cars" style="width: 100%; height: 100%">
     <img
       class="card-img-top"
       src="https://localhost:44375{{ car.imagePath }}"

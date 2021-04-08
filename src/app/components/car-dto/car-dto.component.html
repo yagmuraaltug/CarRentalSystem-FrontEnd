@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row my-3">
-    <div class="col-md-10">
+    <div class="col-md-10" role="status">
       <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
           <div
@@ -56,7 +56,7 @@
             </tr>
             <tr>
               <th>Daily Price:</th>
-              <td>{{ car.dailyPrice }}</td>
+              <td>{{ car.dailyPrice | currency: "₺" }}</td>
             </tr>
             <tr>
               <th>Description:</th>
@@ -68,6 +68,26 @@
             </tr>
           </tbody>
         </table>
+
+        <button
+          *ngFor="let car of cars"
+          (click)="AvailableCars(car.id)"
+          [hidden]="!CarsAvailable"
+          routerLink="/rentals/add/{{ car.id }}"
+          class="btn btn-outline-success"
+        >
+          Rent
+        </button>
+
+        <div *ngIf="showAlert" class="alert alert-danger mt-5" role="alert">
+          Sorry the car already rented, please check the other cars.
+        </div>
+        <button
+        *ngFor="let car of cars"
+        routerLink="/cars/update/{{ car.id }}"
+        class="btn btn-warning" style="margin-top: 5px;"
+        >Güncelle</button>
+  
       </div>
     </div>
   </div>

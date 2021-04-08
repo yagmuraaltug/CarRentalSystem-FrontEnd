@@ -1,9 +1,32 @@
 <div class="list-group rounded margin-top:5px; border border-dark mt-3">
-  <button (click)= "resetCurrentColor()" [class]="getAllColorClass()" routerLink="/cars">All Colors</button>
+  <button
+    (click)="resetCurrentColor()"
+    [class]="getAllColorClass()"
+    routerLink="/cars"
+  >
+    All Colors
+  </button>
+  <div class="mb-3">
+    <label
+      for="filterColor"
+      class="form-label"
+      style="text-align: center; margin-left: 80px"
+    
+      >Search Colors</label
+    >
+    <input
+      type="text"
+      [(ngModel)]="filterColor"
+      class="form-control"
+      id="filterColor"
+      placeholder="Please enter a color name"
+    />
+  </div>
   <a
     (click)="setCurrentColor(color)"
-    routerLink="/cars/color/{{ color.colorId}}"
-    *ngFor="let color of colors"
+    routerLink="/cars/color/{{ color.colorId }}"
+    *ngFor="let color of colors | filterColor: filterColor"
     [class]="getCurrentColorClass(color)"
-    >{{color.colorName}} </a>
+    >{{ color.colorName }}
+  </a>
 </div>

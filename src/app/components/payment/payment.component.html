@@ -1,0 +1,47 @@
+<form [formGroup]="paymentAddForm">
+<div class="row" style="margin-top: 20px">
+  <div class="col-75">
+    <div class="container">
+      <div class="col-50">
+        <h3>Payment</h3>
+        
+        <label for="fname">Accepted Cards</label>
+        <div class="icon-container">
+          <i class="fab fa-cc-apple-pay"></i>
+          <i class="fa fa-cc-amex" style="color: blue"></i>
+          <i class="fa fa-cc-mastercard" style="color: red"></i>
+          <i class="fa fa-cc-discover" style="color: orange"></i>
+        </div>
+
+        <label for="cardHolderName">Name on Card</label>
+        <input
+          type="text"
+          class="form-control" id="cardHolderName" formControlName="cardHolderName"
+          placeholder="Card Holder Name"
+        />
+        <label for="cardNumber">Credit card number</label>
+        <input
+          type="text"
+          class="form-control" id="cardNumber" formControlName="cardNumber"
+          placeholder="1111-2222-3333-4444"
+        />
+
+        <div class="row">
+          <div class="col-50">
+            <label for="cardExpirationDate">Exp Date</label>
+            <input type="text" class="form-control" id="cardExpirationDate" formControlName="cardExpirationDate" placeholder="01/23" />
+          </div>
+          <div class="col-50">
+            <label for="cardCvv">CVV</label>
+            <input type="text" class="form-control" id="cardCvv" formControlName="cardCvv" placeholder="352" />
+          </div>
+        </div>
+      </div>
+
+      <input type="submit"  (click)="addPayment()" value="Continue to checkout" class="btn" />
+
+    </div>
+  </div>
+ 
+</div>
+</form>

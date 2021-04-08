@@ -1,0 +1,78 @@
+<div class="content">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header"><h5 class="title">Update Car</h5></div>
+        <div class="card-body">
+          <div class="card-body">
+              <form [formGroup]="carUpdateForm">
+                <div *ngIf="cars" class="form-group">
+                  <input
+                    type="number"
+                    id="id"
+                    formControlName="id"
+                    class="form-control"
+                    placeholder="{{ cars[0].id }}"            
+                  />
+                </div>
+                <br />
+                <div class="form-group">
+                  <select class="form-select" id="brands" formControlName="brandId">
+                    <option *ngIf="cars" value="">{{ cars[0].brandId }}</option>
+                    <option *ngFor="let brand of brands" [ngValue]="brand.brandId">
+                      {{ brand.brandName }}
+                    </option>
+                  </select>
+                </div>
+                <br />
+                <div class="form-group">
+                  <select class="form-select" id="colors" formControlName="colorId">
+                    <option *ngIf="cars" value="">{{ cars[0].colorId }}</option>
+      
+                    <option *ngFor="let color of colors" [ngValue]="color.colorId">
+                      {{ color.colorName }}
+                    </option>
+                  </select>
+                </div>
+                <br />
+                <div class="form-group">
+                  <input
+                    *ngIf="cars"
+                    type="number"
+                    id="modelYear"
+                    formControlName="modelYear"
+                    class="form-control"
+                    placeholder="{{ cars[0].modelYear }}"
+                  />
+                </div>
+                <br />
+                <div class="form-group">
+                  <input
+                    *ngIf="cars"
+                    type="number"
+                    id="dailyPrice"
+                    formControlName="dailyPrice"
+                    class="form-control"
+                    placeholder="{{ cars[0].dailyPrice }}"
+                  />
+                </div>
+                <br />
+                <div class="form-group">
+                  <input
+                    *ngIf="cars"
+                    type="text"
+                    id="descriptionCar"
+                    formControlName="description"
+                    class="form-control"
+                    placeholder="{{ cars[0].description }}"
+                  />
+                </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-fill btn-warning" (click)="update()">Update</button>
+            </div>
+        </div>
+
+    </div>
+
+</div> 
