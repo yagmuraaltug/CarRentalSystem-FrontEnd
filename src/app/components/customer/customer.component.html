@@ -5,12 +5,15 @@
         <th>ID</th>
         <th>USERID</th>
         <th>CUSTOMERNAME</th>
+        <th>FINDEX NOTE</th>
       </tr>
     </thead>
     <tr *ngFor="let customer of customers">
       <td>{{ customer.customerId }}</td>
       <td>{{ customer.userId }}</td>
       <td>{{ customer.customerName }}</td>
+      <td>{{ customer.findexNote }}</td>
+
     </tr>
   </table>
   

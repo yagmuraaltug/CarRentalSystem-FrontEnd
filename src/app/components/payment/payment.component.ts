@@ -18,6 +18,8 @@ export class PaymentComponent implements OnInit {
   cardId: number;
 
   rentalInfo:Rental;
+  saveCard:boolean;
+
 
 
   cards: Card[];
@@ -41,6 +43,8 @@ export class PaymentComponent implements OnInit {
       cardNumber: ["",Validators.required],
       cardExpirationDate :["", Validators.required],
       cardCvv:["",Validators.required],
+      saveCard:[""]
+
     })
   }
 
@@ -62,7 +66,7 @@ export class PaymentComponent implements OnInit {
         paymentModel.customerId = parseInt(paymentModel.customerId);
       }
 
-      this.paymentService.payment(paymentModel)
+      this.paymentService.payment(paymentModel, this.saveCard)
         .subscribe((response) => {
           this.toastrService.success(response.message, "Payment successfully finished ! Thank you!");
 
@@ -82,6 +86,17 @@ export class PaymentComponent implements OnInit {
     else{
       this.toastrService.error("Sorry , there is empty places, please check again.")
     }
+  }
+
+  setCurrentCard(card:Card){
+    this.paymentAddForm.setValue({
+      cardOwnerName : card.CardHolderName,
+      cardNumber : card.cardNumber,
+      cardExpirationDate : card.cardExpirationDate,
+      cardCvv : card.cardCvv,
+      saveCard : false,
+    })
+    this.cardId = card.id
   }
   
   

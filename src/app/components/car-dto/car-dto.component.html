@@ -66,8 +66,13 @@
               <th>Model:</th>
               <td>{{ car.modelYear }}</td>
             </tr>
+            <tr>
+              <th>Findex Note:</th>
+              <td>{{ car.findexNote }}</td>
+            </tr>
           </tbody>
         </table>
+
 
         <button
           *ngFor="let car of cars"
@@ -83,11 +88,13 @@
           Sorry the car already rented, please check the other cars.
         </div>
         <button
-        *ngFor="let car of cars"
-        routerLink="/cars/update/{{ car.id }}"
-        class="btn btn-warning" style="margin-top: 5px;"
-        >Güncelle</button>
-  
+          *ngFor="let car of cars"
+          routerLink="/cars/update/{{ car.id }}"
+          class="btn btn-warning"
+          style="margin-top: 5px"
+        >
+          Güncelle
+        </button>
       </div>
     </div>
   </div>

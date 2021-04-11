@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Car } from 'src/app/models/car/car';
 import { CarImageService } from 'src/app/services/image.service';
 import { CarImage } from 'src/app/models/CarImage';
@@ -20,7 +20,10 @@ import { CarDto } from 'src/app/models/car-dto/car-dto';
 })
 export class CarDtoComponent implements OnInit {
 
+  customer : Customer ;
+  customerDetails : Customer[];
   cars: Car[]=[] ;
+  rentals:Rental;
   car:Car;
   images: CarImage[] = [];
   CarsAvailable: boolean;
@@ -30,6 +33,7 @@ export class CarDtoComponent implements OnInit {
   returnDate: Date;
   customerId: number;
   isRented: boolean = false;
+  fintexNote: number;
  
 
   
@@ -38,6 +42,9 @@ export class CarDtoComponent implements OnInit {
     private carService:CarService,
     private CarImageService:CarImageService,
     private rentalService:RentalService,
+    private toastrService:ToastrService,
+    private customerService:CustomerService,
+    private router:Router
   
     ) { } 
 
@@ -50,6 +57,7 @@ export class CarDtoComponent implements OnInit {
 
 
        }
+       
 
     });
 
@@ -95,4 +103,17 @@ createRental() {
 
 }
 
+checkFindexNote(){
+ 
+     if(this.car.findexNote > this.customer.findexNote){
+      this.toastrService.error("Findex puanı yetersiz")
+    }
+    else{
+      this.router.navigate(['/rentals/add/' + this.car.id ]) 
+    }    
+  }
+
+  
 }
+
+

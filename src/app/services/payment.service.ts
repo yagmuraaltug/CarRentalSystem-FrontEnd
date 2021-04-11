@@ -21,12 +21,20 @@ export class PaymentService {
   
   constructor(private httpClient:HttpClient) { }
 
-  payment(payment:Payment):Observable<ResponseModel>{
+  payment(payment:Payment, saveCard:boolean):Observable<ResponseModel>{
     
     let addPaymentApiUrl = this.paymentApiUrl + "add";
     let addCardApiUrl = this.cardApiUrl + "add";
     
-    
+    if(saveCard){
+      this.card.customerId = payment.customerId;
+      this.card.CardHolderName = payment.cardHolderName;
+      this.card.cardCvv = payment.cardCvv;
+      this.card.cardExpirationDate = payment.cardExpirationDate;
+      this.card.cardNumber = payment.cardNumber;
+
+      return this.httpClient.post<ResponseModel>(addCardApiUrl, this.card);
+    }
     
     return this.httpClient.post<ResponseModel>(addPaymentApiUrl, payment);
 

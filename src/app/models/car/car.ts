@@ -8,6 +8,7 @@ export interface Car{
     dailyPrice:number,
     description:string,
     modelYear:number,
-    imagePath:string;
+    imagePath:string,
+    findexNote:number;
 
 }

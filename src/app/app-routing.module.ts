@@ -6,7 +6,9 @@ import { CarDtoComponent } from './components/car-dto/car-dto.component';
 import { CarUpdateComponent } from './components/car/car-update/car-update.component';
 import { CarComponent } from './components/car/car.component';
 import { ColorAddComponent } from './components/color/color-add/color-add.component';
+import { LoginComponent } from './components/login/login.component';
 import { PaymentComponent } from './components/payment/payment.component';
+import { RegisterComponent } from './components/register/register.component';
 import { RentalDetailsComponent } from './components/rental-details/rental-details.component';
 import { WalletComponent } from './components/wallet/wallet.component';
 
@@ -24,7 +26,13 @@ const routes: Routes = [
   {path:"colors/update/:colorId", component:ColorAddComponent},
   {path:"brands/add", component:BrandAddUpdateComponent},
   {path: "wallet", component: WalletComponent},
+  {path:"login", component:LoginComponent},
+  {path:"logOut", component:LoginComponent},
   {path:"payment", component:PaymentComponent},
+  {path:"register", component:RegisterComponent},
+  {path:"getCarDetails", component:CarComponent}
+
+  
 
 
 

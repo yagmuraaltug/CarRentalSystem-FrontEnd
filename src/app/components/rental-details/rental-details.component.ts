@@ -1,14 +1,16 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators,FormControl } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Car } from 'src/app/models/car/car';
 import { CarImage } from 'src/app/models/CarImage';
 import { Customer } from 'src/app/models/customer/customer';
 import { Rental } from 'src/app/models/rental/rental';
+import { User } from 'src/app/models/user';
 import { CarService } from 'src/app/services/car.service';
 import { CustomerService } from 'src/app/services/customer.service';
 import { CarImageService } from 'src/app/services/image.service';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { PaymentService } from 'src/app/services/payment.service';
 import { RentalService } from 'src/app/services/rental.service';
 import { WalletService } from 'src/app/services/wallet.service';
@@ -23,11 +25,15 @@ export class RentalDetailsComponent implements OnInit {
   rentalAddForm:FormGroup;
   customersDetails : Customer[];
   carDetail: Car;
-
+  rental:Rental;
+  user:User [];
+  customer:Customer;
+  
   rentDate: Date;
   returnDate: Date;
   totalPrice:number;
-
+  findexCompare:boolean;
+  rentable:boolean = true;
   carImages : CarImage[];
 
   constructor(private rentalService:RentalService,
@@ -35,9 +41,12 @@ export class RentalDetailsComponent implements OnInit {
     private activetedRoute:ActivatedRoute,
     private customerService:CustomerService,
     private carService:CarService,
+    private router:Router,
     private carImageService:CarImageService,
     private walletService:WalletService,
-    private toastrService:ToastrService) { }
+    private toastrService:ToastrService,
+    private localStorageService: LocalStorageService
+    ) { }
 
   ngOnInit(): void {
     this.createRentalAddForm();
@@ -53,6 +62,8 @@ export class RentalDetailsComponent implements OnInit {
       this.getCarImagesCarId();
   }
 
+  
+
   getCustomersDetail(){
     this.customerService.getCustomers()
       .subscribe((response) => {
@@ -60,6 +71,9 @@ export class RentalDetailsComponent implements OnInit {
       })
   }
 
+
+
+  
   getCarDetailByCarId(carId: number){
     this.carService.getCarDetailsByCarId(carId)
     .subscribe((response) => {
@@ -83,7 +97,9 @@ export class RentalDetailsComponent implements OnInit {
     });
   }
 
+
   addToCart(){
+    
     if(this.rentalAddForm.valid){
 
       let rentalModel = Object.assign({}, this.rentalAddForm.value);
@@ -96,20 +112,40 @@ export class RentalDetailsComponent implements OnInit {
       rentalModel.totalPrice = this.totalPrice;
       rentalModel.carImages = this.carImages;
 
-      //Araç kiralama bilgilerinin eklenmesi
       rentalModel.rentDate = this.rentalAddForm.value.rentDate;
       rentalModel.returnDate = this.rentalAddForm.value.returnDate;
       rentalModel.customerId = this.rentalAddForm.value.customerId;
-      this.rentalService.setRental(rentalModel);
+      if(this.findexCompare ==true){
+        this.rentalService.setRental(rentalModel);
 
-      //Sepete eklenmesi
-      this.walletService.addToCart(rentalModel);
-      this.toastrService.info("Sepete eklendi", this.carDetail.brandName);
+        this.walletService.addToCart(rentalModel);
+        this.toastrService.info("Sepete eklendi", this.carDetail.brandName);
+      }else{
+        this.toastrService.error("Your findex note is not enough for renting this car , please check again")
+
+      }
+  
     }
     else{
       this.toastrService.error("Lütfen ilgili yerleri doldurunuz", "Hata!");
     }
 
+  }
+
+  createRental() {
+    if (this.rentalAddForm.valid) {
+           this.rentalService.getCustomerFindexNote(this.rentalAddForm.value.customerId).subscribe(resp => {
+        if (this.customer.findexNote >= this.carDetail.findexNote) {
+          this.rental = this.rentalAddForm.value
+          console.log(JSON.stringify(this.rental));
+          this.toastrService.success("Ödeme Sayfasına yönlendiriliyorsunuz!", "Başarılı");
+          //this.router.navigate(["cars/rent/payment/"+this.rental.carId]);
+        }
+      })
+
+    } else {
+      this.toastrService.error("Formunuz eksik", "Dikkat")
+    }
   }
 
   calculateTotalPrice(){
@@ -127,4 +163,26 @@ export class RentalDetailsComponent implements OnInit {
       this.totalPrice = dateDiff * this.carDetail.dailyPrice;
     }
   }
-}
+  addRental(){
+    if(this.rentable==true){
+      this.router.navigate(['/cards/', JSON.stringify(this.rental)])
+      this.toastrService.info("Credit Card", "Redirecting to Payment Page")
+    }
+    else{
+      this.toastrService.warning("Can not rent", "Rental is not available")
+    }
+  }
+  findeksControl() {
+    this.customerService.getCustomerFindexNote(this.customer.customerId).subscribe(response => {
+      if (this.carDetail.findexNote < this.customer.customerId) {
+        this.findexCompare = true;
+      }
+      return false
+    }, errorResponse => {
+      return false
+    })
+
+  }
+  }
+
+

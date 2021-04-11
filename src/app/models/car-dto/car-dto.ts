@@ -10,4 +10,5 @@ export interface CarDto{
     dailyPrice: number;
     description: string;
     ImagePath:string;
+    
 }
