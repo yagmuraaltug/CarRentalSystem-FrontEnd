@@ -34,7 +34,7 @@ Project BackEnd API: https://github.com/yagmuraaltug/RentalCarSystem
 ![7](https://user-images.githubusercontent.com/78735886/115398452-d8b61780-a1ef-11eb-846f-683fbc629f76.png)
 ![8](https://user-images.githubusercontent.com/78735886/115398456-d9e74480-a1ef-11eb-9a82-5c55dd98aa90.png)
 ![9](https://user-images.githubusercontent.com/78735886/115398458-da7fdb00-a1ef-11eb-8da2-79bbdacf863c.png)
-##Date Pge
+##Date Page
 ![10](https://user-images.githubusercontent.com/78735886/115398466-db187180-a1ef-11eb-9e91-43b329a7fce4.png)
 
 ![11](https://user-images.githubusercontent.com/78735886/115398470-dce23500-a1ef-11eb-9f5c-b11d56077737.png)
