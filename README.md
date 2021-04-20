@@ -20,4 +20,3 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 Bağlı Olduğu Restful API: https://github.com/yagmuraaltug/RentalCarSystem
 
 ##Programs we have used in this project:
-![indir](https://user-images.githubusercontent.com/78735886/115397251-90e2c080-a1ee-11eb-83ce-6f3f057e9044.png)
