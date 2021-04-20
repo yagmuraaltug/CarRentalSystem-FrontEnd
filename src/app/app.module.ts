@@ -15,21 +15,23 @@ import { CarComponent } from './components/car/car.component';
 import { RentalComponent } from './components/rental/rental.component';
 import { NaviComponent } from './components/navi/navi.component';
 import { from } from 'rxjs';
-import { CarDtoComponent } from './components/car-dto/car-dto.component';
+import { CarDtoComponent } from './components/car/car-dto/car-dto.component';
 import { FilterBrandPipe } from './pipes/filter-brand.pipe';
 import { FilterColorPipe } from './pipes/filter-color.pipe';
 import { FilterCarPipe } from './pipes/filter-car.pipe';
-import { RentalDetailsComponent } from './components/rental-details/rental-details.component';
+import { RentalDetailsComponent } from './components/rental/rental-details/rental-details.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { WalletComponent } from './components/wallet/wallet.component';
 import { CarUpdateComponent } from './components/car/car-update/car-update.component';
 import { ColorAddComponent } from './components/color/color-add/color-add.component';
 import { BrandAddUpdateComponent } from './components/brand/brand-add-update/brand-add-update.component';
-import { CarAddComponent } from './components/car-add/car-add.component';
+import { CarAddComponent } from './components/car/car-add/car-add.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
-import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/auth/login/login.component';
+import { RegisterComponent } from './components/auth/register/register.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { AdminComponent } from './components/auth/admin/admin.component';
+import { ProfileEditComponent } from './components/auth/profile-edit/profile-edit.component';
 
 
 @NgModule({
@@ -55,6 +57,8 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     HomepageComponent,
     LoginComponent,
     RegisterComponent,
+    AdminComponent,
+    ProfileEditComponent,
   ],
   imports: [
     BrowserModule,

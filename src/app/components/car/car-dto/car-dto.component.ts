@@ -12,6 +12,8 @@ import { PaymentService } from 'src/app/services/payment.service';
 import { Customer } from 'src/app/models/customer/customer';
 import { Rental } from 'src/app/models/rental/rental';
 import { CarDto } from 'src/app/models/car-dto/car-dto';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { CustomerDetail } from 'src/app/models/customerDetail';
 
 @Component({
   selector: 'app-car-dto',
@@ -23,7 +25,6 @@ export class CarDtoComponent implements OnInit {
   customer : Customer ;
   customerDetails : Customer[];
   cars: Car[]=[] ;
-  rentals:Rental;
   car:Car;
   images: CarImage[] = [];
   CarsAvailable: boolean;
@@ -32,8 +33,8 @@ export class CarDtoComponent implements OnInit {
   rentDate: Date;
   returnDate: Date;
   customerId: number;
-  isRented: boolean = false;
-  fintexNote: number;
+  customers:CustomerDetail = new CustomerDetail();
+
  
 
   
@@ -44,7 +45,8 @@ export class CarDtoComponent implements OnInit {
     private rentalService:RentalService,
     private toastrService:ToastrService,
     private customerService:CustomerService,
-    private router:Router
+    private router:Router,
+    private localStorageService:LocalStorageService,
   
     ) { } 
 
@@ -57,9 +59,13 @@ export class CarDtoComponent implements OnInit {
 
 
        }
+
+       
        
 
     });
+    let email = this.localStorageService.get("email");
+    this.getCustomerId(email == null ? email = "" : email.toString());
 
   }
 
@@ -83,6 +89,15 @@ export class CarDtoComponent implements OnInit {
   }
 }
 
+getCustomerId(email:string){
+  this.customerService.getCustomersByEmail(email == null ? email="" : email).subscribe(
+    response => {
+      this.customers = response.data;
+      this.localStorageService.set("customerId", this.customers.customerId)
+    },
+    responseError => { console.log("You are not customer yet.") }
+  )
+}
 AvailableCars(carId:number){
   this.rentalService.AvailableCars(carId)
     .subscribe((response) => {
@@ -96,24 +111,10 @@ createRental() {
   this.rental.carId = this.car.id;
   this.rental.returnDate = this.returnDate;
   this.rental.rentDate = this.rentDate;
-  this.rental.customerId = this.customerId;
 
   localStorage.setItem("rentDetail",JSON.stringify(this.rental));
   localStorage.setItem("rental",JSON.stringify(this.car));
 
 }
-
-checkFindexNote(){
- 
-     if(this.car.findexNote > this.customer.findexNote){
-      this.toastrService.error("Findex puanı yetersiz")
-    }
-    else{
-      this.router.navigate(['/rentals/add/' + this.car.id ]) 
-    }    
-  }
-
   
 }
-
-

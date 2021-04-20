@@ -21,6 +21,7 @@
     "@angular/router": "~11.2.6",
     "@auth0/angular-jwt": "^5.0.2",
     "angular": "^1.8.2",
+    "angular-2-local-storage": "^3.0.2",
     "bootstrap": "^4.6.0",
     "font-awesome": "^4.7.0",
     "form-group": "^3.0.8",

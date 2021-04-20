@@ -72,17 +72,42 @@
             </tr>
           </tbody>
         </table>
+        <div *ngFor="let car of cars">
+          <div
+            *ngIf="customers.findexNote < car.findexNote"
+            class="alert alert-danger mt-5"
+            role="alert"
+          >
+            Your findex note is not enough for renting this car, please check
+            the other cars.
+            <button
+              (click)="AvailableCars(car.id)"
+              [hidden]="!CarsAvailable"
+              routerLink="/cars"
+              class="btn btn-outline-success"
+            >
+              Cars
+            </button>
+          </div>
+          <div
+            *ngIf="customers.findexNote >= car.findexNote"
+            class="alert alert-success mt-5"
+            role="alert"
+          >
+            Your findex note is enough for renting this car, please choose your
+            date!
 
-
-        <button
-          *ngFor="let car of cars"
-          (click)="AvailableCars(car.id)"
-          [hidden]="!CarsAvailable"
-          routerLink="/rentals/add/{{ car.id }}"
-          class="btn btn-outline-success"
-        >
-          Rent
-        </button>
+            <button
+              *ngFor="let car of cars"
+              (click)="AvailableCars(car.id)"
+              [hidden]="!CarsAvailable"
+              routerLink="/rentals/add/{{ car.id }}"
+              class="btn btn-outline-success"
+            >
+              Rent
+            </button>
+          </div>
+        </div>
 
         <div *ngIf="showAlert" class="alert alert-danger mt-5" role="alert">
           Sorry the car already rented, please check the other cars.

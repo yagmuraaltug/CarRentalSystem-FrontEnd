@@ -1,0 +1,122 @@
+<div class="card" style="width: 1110px; height: 400px; background-color: grey">
+  <div class="container emp-profile">
+    <form method="post">
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-6">
+          <div class="profile-head">
+            <h5>
+              {{ userDetails.userName + " " + userDetails.userLastName }}
+            </h5>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <input
+            type="submit"
+            class="profile-edit-btn"
+            name="btnAddMore"
+            value="Edit Profile"
+            routerLink="/profile-edit/"
+          />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8">
+          <div class="tab-content profile-tab" id="myTabContent">
+            <div
+              class="tab-pane fade show active"
+              id="home"
+              role="tabpanel"
+              aria-labelledby="home-tab"
+            >
+              <div class="row">
+                <div class="col-md-6">
+                  <label>User Id</label>
+                </div>
+                <div class="col-md-6">
+                  <p>{{ customer.userId }}</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label>Email</label>
+                </div>
+                <div class="col-md-6">
+                  <p>{{ userDetails.userEmail }}</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label>Findex Score</label>
+                </div>
+                <div class="col-md-6">
+                  <p>{{ userDetails.findexNote }}</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label>Profession</label>
+                </div>
+                <div class="col-md-6">
+                  <p>Software Developer</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div >
+  <div class="card mt-3 mb-3" style="background-color: rgb(104, 32, 170)">
+    <div class="card-header">
+      <h5 class="card-title">CAR</h5>
+    </div>
+    <div class="body">
+      <ul class="list-group">
+        <li
+          routerLink="/cars/details"
+          class="list-group-item"
+          style="background-color: darksalmon"
+        >
+          Change Car Details
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card mt-3 mb-3" style="background-color: rgb(104, 32, 170)">
+    <div class="card-header">
+      <h5 class="card-title">COLOR</h5>
+    </div>
+    <div class="body">
+      <ul class="list-group">
+        <li
+          routerLink="/colors/details"
+          class="list-group-item"
+          style="background-color: darksalmon"
+        >
+          Change Color Details
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card mt-3 mb-3" style="background-color: rgb(104, 32, 170)">
+    <div class="card-header">
+      <h5 class="card-title">BRAND</h5>
+    </div>
+    <div class="body">
+      <ul class="list-group">
+        <li
+          routerLink="/brands/details"
+          class="list-group-item"
+          style="background-color: darksalmon"
+        >
+          Change Brand Details
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

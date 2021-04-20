@@ -1,50 +1,51 @@
 import { Injectable } from '@angular/core';
+import { Customer } from '../models/customer/customer';
+import { TokenModel } from '../models/tokenModel';
 import { User } from '../models/user';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LocalStorageService {
 
-  localStorage: Storage;
-  currentUser: string = "currentUser";
+  currentCustomer:string;
+  constructor() { }
+
+  get(key:string):any {
+    return localStorage.getItem(key);
+ }
 
 
-  constructor() { 
-     this.localStorage = window.localStorage;
-  }
-  getItem(key : string){
-    return localStorage.getItem(key)
+  delete(key:string){
+    localStorage.removeItem(key);
   }
 
-  setItem(key: string, value: string){
-    localStorage.setItem(key, value)
+  set(key:string, value:any) {
+    localStorage.setItem(key, value);
+ }
+
+    
+  add(key:string, value:any){
+    localStorage.setItem(key, value);
+  }
+ 
+
+  clear(){
+    localStorage.clear();
   }
 
-  clean(){
-    localStorage.clear()
-  }
-
-  removeItem(key: string){
-    localStorage.removeItem(key)
-  }
-  setUser(email:string){
-    localStorage.setItem(this.currentUser,JSON.stringify(email));
-  }
-
-  getUser(){
-    return JSON.parse(localStorage.getItem(this.currentUser) ||'{}');
-  }
-
-  removeUser(){
-    localStorage.removeItem(this.currentUser);
-  }
 
   
-  setCurrentCustomer(currenUserValue: User) {
-    localStorage.setItem(this.currentUser, JSON.stringify(currenUserValue));
+  setCurrentCustomer(currentCustomerValue:User) {
+    localStorage.setItem(this.currentCustomer, JSON.stringify(currentCustomerValue));
   }
-  getCurrentUser(): User {
-    return JSON.parse(localStorage.getItem(this.currentUser)!);
+  
+  getCurrentCustomer(): User {
+    var customer = JSON.parse(localStorage.get(this.currentCustomer));
+    return customer;
+  }
+  
+  removeCurrentCustomer() {
+    localStorage.removeItem(this.currentCustomer);
   }
 }

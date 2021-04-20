@@ -2,148 +2,123 @@
     body{
     margin:0 auto;
     background-color:#7D1B7E;
+    height: 650px;
     }
     #titlebg
     {
     width:775px;
     height:123px;
     }
-    .title{
-      font-family:Arial, Helvetica, sans-serif;
-      font-size:36px;
-      font-weight:bold;
-      color:#FFFFFF;
-      width: 30px;
-      margin-top: 30px;
-      margin-left: 50px;
-      padding-top: 40px;
+
+ 
+    html, body {
+      height: 100%;
     }
-    .title1{
-      font-family:Arial, Helvetica, sans-serif;
-      font-size:36px;
-      font-weight:bold;
-      color:#fdc901;
-      width: 30px;
-      margin-left: 150px;
-      margin-top: -42px;
-    }
-    .title2{
-      font-family:Arial, Helvetica, sans-serif;
-      font-size:14px;
-      font-weight:bold;
-      color:#FFFFFF;
-      width: 70px;
-      margin-left: 518px;
-      margin-top: -23px;
-    }
-    .title3{
-      font-family:Arial, Helvetica, sans-serif;
-      font-size:14px;
-      font-weight:bold;
-      color:#3987b3;
-      width: 150px;
-      margin-left: 590px;
-      margin-top: -15px;
-    }
-    .title4{
-      font-family:Arial, Helvetica, sans-serif;
-      font-size:10px;
-      font-weight:bold;
-      color:#57a3d4;
-      width: 740px;
-      text-align:right;
-      text-decoration:none;
-      margin:5px;
-      margin-top:25px;
-    }
-    
-    #hrline{
-    width:775px;
-    height:5px;
-    background-color:#787878;
-    }
-    #gradientbg{
-    width:775px;
-    height:244px;
-    background-repeat:no-repeat;
-    margin-top:-7px;
-    }
-    #links{
-    float:left;
-    width:158px;
-    height:176px;
-    background-repeat:no-repeat;
-    position:relative;
-    left:0px;
-    top:1px;
-    }
-    #arrow{
-      
-      width:13px;
-      height:18px;
-      background-repeat:no-repeat;
-        position: absolute;
-      left:65px;
-      top:24px;
-      }
-      #arrowabout{
-      
-      width:13px;
-      height:18px;
-      background-repeat:no-repeat;
-      position: absolute;
-      left:65px;
-      top:63px;
-      }
-        #arrowservice{
-      
-      width:13px;
-      height:18px;
-      background-repeat:no-repeat;
-      position: absolute;
-      left:65px;
-      top:102px;
-      }
-      #arrowcatalogue{
-      
-      width:13px;
-      height:18px;
-      background-repeat:no-repeat;
-      position: absolute;
-      left:65px;
-      top:143px;
-      }
-      #arrowcontact{
-      
-      width:13px;
-      height:18px;
-      background-repeat:no-repeat;
-      position: absolute;
-      left:65px;
-      top:184px;
-      }
-    #arrow1{
-        float:left;
-      width:4px;
-      height:6px;
-      background-repeat:no-repeat;
-      margin-top:20px;
-      margin-left:10px;		
-    }
-    .linktxt{
-      width:140px;
-      font-size:14px;
-      font-weight:bold;
-      color:#FFFFFF;
-      margin-left:50px;
-      padding-top:25px;
-      font-family: Arial, Helvetica, sans-serif;
-      text-decoration:none;
-    }
-    #header{
-      width:100%;
-      height: 100%;;
-      background-repeat:no-repeat;
-      margin-left: 250px;
+  
+
+
+
+  
+    p {
+      line-height: 1.5;
     }
  
+  
+  
+  /* 4. SERVICE ICONS */
+  
+    .service-icons{
+      padding-top: 150px;
+      padding-bottom: 150px;
+      text-align: center;
+      font-family: 'Raleway';
+      font-size: 30px;
+     text-align: center;
+      font-weight: 700;
+      color: #262626;
+
+    }
+  
+    .st-service-box{
+      padding: 0 20px;
+    }
+    
+    .st-service-box span{
+       font-size: 32px;
+       color: #68c3a3;
+    }
+  
+    .st-service-box h3{
+      font-family: 'Raleway';
+      font-size: 30px;
+     text-align: center;
+      font-weight: 700;
+      color: #262626;
+      margin: 20px 0 0;
+  
+    }
+  
+    .st-service-box p{
+      font-size: 14px;
+      color: #262626;
+      margin: 20px 0 0;
+    }
+  
+    .st-service-box a{
+      font-family: 'Raleway';
+      font-weight: 700;
+      font-size: 14px;
+      color: #262626;
+      display: inline-block;
+      margin: 20px 0 0;
+    }
+  
+    .st-service-box a:hover{
+      color: #68c3a3;
+    }
+  	.contact{
+      padding: 4%;
+    }
+    .col-md-3{
+      background: #ff9b00;
+      padding: 4%;
+      border-top-left-radius: 0.5rem;
+      border-bottom-left-radius: 0.5rem;
+    }
+    .contact-info{
+      margin-top:10%;
+    }
+    .contact-info img{
+      margin-bottom: 15%;
+    }
+    .contact-info h2{
+      margin-bottom: 10%;
+    }
+    .col-md-9{
+      background: #fff;
+      padding: 3%;
+      border-top-right-radius: 0.5rem;
+      border-bottom-right-radius: 0.5rem;
+    }
+    .contact-form label{
+      font-weight:600;
+    }
+    .contact-form button{
+      background: #25274d;
+      color: #fff;
+      font-weight: 600;
+      width: 25%;
+    }
+    .contact-form button:focus{
+      box-shadow:none;
+    }
+  
+ 
+    
+  
+  
+  
+  
+  
+  
+  

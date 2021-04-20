@@ -1,7 +1,8 @@
+
 <div class="content">
-    <div class="col-md-12">
-      <div class="card">
-        <div class="card-header"><h5 class="title">Update Car</h5></div>
+    <div class="col-md-12" style="width: 600px;">
+      <div class="card" >
+        <div class="card-header" style="background-color: darksalmon;"><h5 class="title">Update Car</h5></div>
         <div class="card-body">
           <div class="card-body">
               <form [formGroup]="carUpdateForm">
@@ -15,6 +16,7 @@
                   />
                 </div>
                 <br />
+                <label for="floatingInput">Brand Id </label>
                 <div class="form-group">
                   <select class="form-select" id="brands" formControlName="brandId">
                     <option *ngIf="cars" value="">{{ cars[0].brandId }}</option>
@@ -24,6 +26,7 @@
                   </select>
                 </div>
                 <br />
+                <label for="floatingInput">Color Id </label>
                 <div class="form-group">
                   <select class="form-select" id="colors" formControlName="colorId">
                     <option *ngIf="cars" value="">{{ cars[0].colorId }}</option>
@@ -34,6 +37,7 @@
                   </select>
                 </div>
                 <br />
+                <label for="floatingInput">Model Year</label>
                 <div class="form-group">
                   <input
                     *ngIf="cars"
@@ -45,6 +49,7 @@
                   />
                 </div>
                 <br />
+                <label for="floatingInput">Daily Price</label>
                 <div class="form-group">
                   <input
                     *ngIf="cars"
@@ -56,6 +61,7 @@
                   />
                 </div>
                 <br />
+                <label for="floatingInput">Description</label>
                 <div class="form-group">
                   <input
                     *ngIf="cars"

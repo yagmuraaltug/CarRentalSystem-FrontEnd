@@ -1,55 +1,104 @@
-<nav class="navbar navbar-expand-lg" style="color: blueviolet;">
-    <a class="navbar-brand" href="#" >Rain Car</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+<nav class="navbar navbar-expand-lg" style="color:indigo">
+  <a class="navbar-brand"><strong>Rain Car</strong></a>
+  <div
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </div>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/homepage/"
+          ><strong>Home</strong> <span class="sr-only">(current)</span></a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/getCarDetails"><strong>Booking</strong></a>
+      </li>
+    </ul>
+    <button
+      routerLink="/wallet/"
+      class="btn"
+      type="submit"
+    >
+      <i class="bi bi-cart"></i
+      ><svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        fill="currentColor"
+        class="bi bi-cart"
+        viewBox="0 0 16 16"
+      >
+        <path
+          d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
+        />
+      </svg>
+      My Basket
     </button>
-  
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/getCarDetails"
-          >Booking</a>
-      </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search</button>
-      </form>
-      <button 
-        routerLink="/wallet/"
-        class="btn btn-outline-warning my-2 my-sm-0" type="submit">
-        <i class="bi bi-cart"></i><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
-          <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-        </svg>
-        My Basket</button>
 
-        <form class="d-flex"  *ngIf="Authenticated == false">
-          <button class="btn btn-danger" routerLink="/register">Kayıt Ol</button>
-          <button class="btn btn-primary" type="submit" routerLink="/login">
-            Giriş Yap
-          </button>
-        </form>
-        <div class="dropdown text-end" *ngIf="Authenticated == true" >
-          <a
-           
-            class="d-block link-dark text-decoration-none dropdown-toggle"
-            id="dropdownUser1"
-            data-bs-toggle="dropdown"
-            aria-expanded="true"
-             type="button"
-             style="color: white;"
-          >
-          
-        </a>
-          <div class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-            <li><a routerLink="/profile/" class="dropdown-item">Profili düzenle</a></li>
-            <li><hr class="dropdown-divider" /></li>
-            <a (click)="logOut()" class="dropdown-item">Çıkış yap</a>
-          </div>
+    <form class="d-flex" *ngIf="!isLoggedIn()">
+      <button class="btn" style="background-color: darkviolet;" routerLink="/register">Register</button>
+      <button class="btn" style="background-color: gold;" type="submit" routerLink="/login">
+        Login
+      </button>
+    </form>
 
-          </div>
-
+    <div class="dropdown" *ngIf="isLoggedIn()">
+      <button
+        class="btn dropdown-toggle"
+        style="background-color: blueviolet;"
+        type="button"
+        id="dropdownMenuButton"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <strong>  {{ userDetails.userName + " " + userDetails.userLastName }}</strong>
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="/profile/">Profile</a>
+        <a (click)="logOut()" class="dropdown-item" href="/login/">LogOut</a>
+      </div>
     </div>
-  </nav>
+  </div>
+</nav>
+
+<main class="flex-fill">
+  <html>
+    <body>
+      <div id="layout">
+        <div id="titlebg">
+          <div class="title">CAR</div>
+          <div class="title1">DEALER</div>
+          <div class="title2">WE HAVE</div>
+          <div class="title3">THE BEST CARS</div>
+        </div>
+        <hr id="hrline" />
+        <div id="gradientbg">
+          <div id="links">
+            <div id="arrow"></div>
+            <div class="linktxt"><a href="/homepage" class="linktxt">HOME</a></div>
+            <div id="arrowabout"></div>
+            <div class="linktxt"><a href="#" class="linktxt">ABOUT US</a></div>
+            <div id="arrowservice"></div>
+            <div class="linktxt"><a href="#" class="linktxt">SERVICES</a></div>
+            <div id="arrowcatalogue"></div>
+            <div class="linktxt"><a href="#" class="linktxt">CATALOGUE</a></div>
+            <div id="arrowcontact"></div>
+            <div class="linktxt"><a href="#" class="linktxt">CONTACTS</a></div>
+          </div>
+          <div id="header"><img src="./assets/header.jpg" /></div>
+        </div>
+      </div>
+      </body>
+  </html>
+</main>
+

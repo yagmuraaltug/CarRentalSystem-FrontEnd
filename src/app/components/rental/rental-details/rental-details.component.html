@@ -1,18 +1,12 @@
-
+<div class="card" style="margin-top: 20px; background-color: grey;">
 <form [formGroup]="rentalAddForm">
   
   <button>
     <div class="form-group">
-      <label for="customerId">
-        Name</label>
-      <select formControlName="customerId"  class="form-control" name="customerId">
-        <option
-          [value]="customer.customerId"
-          *ngFor="let customer of customersDetails"
-        >
-          Customer Name = {{ customer.customerName }}
-        </option>
-      </select>
+      <p class="card-text">
+        <span class="text-muted">Customer : </span>
+        <strong>{{getUserName()}}</strong>
+      </p>
     </div>
     </button>
     <div class="form-group" >
@@ -44,4 +38,4 @@
   
     <button (click)="addToCart()" class="btn btn-outline-dark">Rent</button>
   </form>
-  
+</div>
